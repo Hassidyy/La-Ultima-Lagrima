@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto – La Última Lágrima</title>
+  <link rel="icon" href="images/proyectoGr.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Menú lateral derecho -->
+<div class="menu-lateral-derecha">
+  <div class="menu-item">
+    <a href="index.html">
+      <img src="images/iconoprincipal.png" alt="Principal" />
+    </a>
+  </div>
+  <div class="menu-item">
+    <a href="productora.html">
+      <img src="images/productora.png" alt="Productora" />
+    </a>
+  </div>
+</div>
+
+
+<!-- Menú hamburguesa para móviles -->
+<nav class="navbar navbar-dark bg-dark d-md-none fixed-top px-3">
+  <div class="container-fluid justify-content-between">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuMovil" aria-controls="menuMovil" aria-expanded="false" aria-label="Menú">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  
+  <div class="collapse navbar-collapse mt-2" id="menuMovil">
+    <ul class="navbar-nav ps-3">
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-2" href="index.html">
+          <img src="images/iconoprincipal.png" alt="Inicio" width="24" /> <span>Inicio</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-2" href="productora.html">
+          <img src="images/productora.png" alt="Productora" width="24" /> <span>Productora</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <!-- Sección portada del proyecto -->
+  <section class="portada-proyecto">
+    <div class="overlay">
+      <img src="images/proyectoWt.png" alt="La Última Lágrima" class="logo-portada" />
+      <p class="frase-impacto"> Cuando el agua desaparece, también lo hace la razón.</p>
+      <div class="scroll-down">
+        <span>▼</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Sección Spot -->
+  <section class="seccion" style="background-color: var(--color-oscuro2);" id="spot">
+    <h2>Spot Oficial</h2>
+    <div class="video-embed">
+      <iframe width="100%" height="500" src="https://www.youtube.com/embed/5PHuoxsctLQ?si=7yVlk7Ub-HfG3mzR" 
+        title="Spot Oficial" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen></iframe>
+    </div>
+
+      <div class="container my-5">
+        <h2 class="text-center mb-4">Galería</h2>
+        <p style="font-family: 'Satoshi Light';">Aquí comienza el viaje visual por los paisajes donde todo se volvió escasez. 
+          Un recorrido por la producción que dio vida (y sombra) a una historia de sed, pérdida y alucinación.</p>
+        <div class="gallery-container">
+          <!-- Imágenes desde carpeta local -->
+          <img src="images/galeria1.JPG" class="gallery-image" alt="galeria1">
+          <img src="images/galeria2.JPG" class="gallery-image" alt="galeria2">
+          <img src="images/galeria3.JPG" class="gallery-image" alt="galeria3">
+          <img src="images/galeria4.JPG" class="gallery-image" alt="galeria4">
+          <img src="images/galeria5.JPG" class="gallery-image" alt="galeria5">
+          <img src="images/galeria6.JPG" class="gallery-image" alt="galeria6">
+          <img src="images/galeria7.JPG" class="gallery-image" alt="galeria7">
+          <img src="images/galeria8.JPG" class="gallery-image" alt="galeria8">
+        </div>
+      </div>
+  
+      <div class="personaje-section">
+        <img src="images/personajeCabeza.png" alt="Máscara" class="personaje-image" />
+        
+        <div class="personaje-content">
+          <h2>Nuestro personaje</h2>
+          <p>
+            El cóndor de la última lágrima es la representación de la completa desesperanza, 
+            esto se demuestra por medio de su expresión con sus ojos caídos y sus ojeras, 
+            también representa la deshidratación por medio de su craneo y su pico muerto y 
+            seco. Esta idea se refuerza con los colores corporativos que ayudan a darle 
+            una estética desesperanzadora.
+          </p>
+        </div>
+        
+        <img src="images/personajeFrente.png" alt="Elemento decorativo" class="personaje-image-right" />
+      </div>
+
+      <footer class="footer">
+        <img src="images/productorawh.png" alt="Logo Productora" class="footer-logo">
+        <div class="social-icons">
+          <a href="https://www.instagram.com/falsoalgoritmo.oficial?igsh=MWdkNXRkdWZpeHpqdA==" target="_blank"><div class="circle"><img src="images/instagram.png" alt="Instagram"></div></a>
+          <a href="https://www.tiktok.com/@falso_algoritmo" target="_blank"><div class="circle"><img src="images/tiktok.png" alt="TikTok"></div></a>
+          <a href="https://www.youtube.com/@falso.algoritmo" target="_blank"><div class="circle"><img src="images/youtube.png" alt="YouTube"></div></a>
+        </div>
+      </footer>
+
+      <script>
+        // Menú hamburguesa toggle
+document.getElementById('hamburguesa-btn').addEventListener('click', () => {
+  const menuMovil = document.getElementById('menu-movil');
+  const visible = menuMovil.style.display === 'flex';
+  menuMovil.style.display = visible ? 'none' : 'flex';
+});
+
+// Menú hamburguesa
+const toggleMenuBtn = document.getElementById('toggle-menu');
+const opcionesMenu = document.getElementById('opciones-hamburguesa');
+
+toggleMenuBtn.addEventListener('click', () => {
+  opcionesMenu.classList.toggle('activo');
+});
+      </script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

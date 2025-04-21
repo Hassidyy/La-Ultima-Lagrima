@@ -1,0 +1,1467 @@
+/* Tipografías */
+@font-face {
+  font-family: 'Impact';
+  src: url('fonts/impact.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi Light';
+  src: url('fonts/Satoshi-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi Bold';
+  src: url('fonts/Satoshi-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi Italic';
+  src: url('fonts/Satoshi-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Mobitale';
+  src: url('fonts/Mobio__.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+:root {
+  --color-claro: #EBEFEE;
+  --color-gris: #748080;
+  --color-verde: #4C593B;
+  --color-oscuro1: #2D3831;
+  --color-oscuro2: #17181A;
+  --transparente: rgba(45, 56, 49, 0.85);
+}
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #000;
+}
+
+body {
+  margin: 0;
+  font-family: 'Impact', sans-serif;
+  background-color: var(--color-oscuro2);
+  color: var(--color-claro);
+}
+
+#video-fondo {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: cover !important;
+  z-index: 0 !important;
+  opacity: 1 !important;
+  display: block !important;
+  background: black !important;
+}
+
+#mutebtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+#mutebtn img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-nombre {
+  font-family: 'Impact', sans-serif;
+  font-size: 3.2rem;
+  color: var(--color-claro);
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 100vh;
+  background-color: var(--transparente);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 10px;
+  z-index: 1000;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.menu-item {
+  position: relative;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.1);
+}
+
+.menu-item img {
+  width: 52px;
+  height: 52px;
+}
+
+.tooltip-text {
+  position: absolute;
+  left: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-oscuro1);
+  color: var(--color-claro);
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  font-family: 'Satoshi Bold', sans-serif;
+}
+
+.menu-item:hover .tooltip-text {
+  opacity: 1;
+}
+
+/* Menú hamburguesa móvil */
+.menu-hamburguesa {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+}
+
+/* Responsivo */
+@media (max-width: 576px) {
+  .logo-nombre {
+    font-size: 1.4rem;
+    gap: 8px;
+  }
+
+  .logo-nombre img {
+    height: 32px;
+  }
+
+  .contenido {
+    margin-left: 70px;
+    padding: 1.5rem;
+  }
+
+
+  .marco-video {
+    width: 100%;
+    max-width: none;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  }
+
+  #cerrar-video {
+    margin-top: 12px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* MENÚ HAMBURGUESA RESPONSIVE */
+body.offcanvas-open {
+  overflow: hidden;
+}
+
+.offcanvas-start {
+  max-width: 240px !important; /* asegura el ancho correcto */
+}
+
+@media (max-width: 576px) {
+  .offcanvas-start.menu-transparente {
+    background-color: rgba(45, 56, 49, 0.85); /* color-oscuro1 con transparencia */
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    width: 240px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: 'Impact';
+  }
+
+  .navbar-nav .nav-link {
+    font-family: 'Impact', sans-serif;
+    color: var(--color-claro);
+    font-size: 1.2rem;
+  }
+  
+  .navbar-dark .navbar-toggler-icon {
+    filter: brightness(0) invert(1); /* Asegura que el ícono sea blanco */
+  }  
+
+  .offcanvas-header {
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+  }
+
+  .offcanvas-title {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5rem;
+    color: #ffffff
+  }
+
+  .offcanvas-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 10px;
+  }
+
+  .menu-transparente .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-claro) !important;
+    font-family: 'Satoshi Bold', sans-serif;
+    font-size: 1.1rem;
+    padding: 10px 16px;
+    width: 100%;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+  }
+
+  .menu-transparente .nav-link img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(1000%);
+  }
+
+  .menu-transparente .nav-link:hover {
+    background-color: rgba(23, 24, 26, 0.65); /* más oscuro, con transparencia */
+  }
+
+  .btn-close {
+    filter: brightness(1000%);
+  }
+}
+
+/* Fondo oscuro del overlay */
+#fondo-oscuro-reparto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+  z-index: 998;
+  display: none; /* Inicialmente oculto */
+}
+
+/* Estilos para la sección de reparto (modal) */
+.reparto-seccion {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1200px;
+  max-height: 90vh;
+  background-color: #111;
+  padding: 30px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  z-index: 999; /* Asegura que el modal esté encima del fondo oscuro */
+  display: none; /* Inicialmente oculto */
+  color: var(--color-claro);
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Cerrar el modal */
+.cerrar-seccion {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 28px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1200;
+}
+
+/* Animación de entrada del modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo para las tarjetas de los personajes dentro del modal */
+.cards-reparto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card-personaje {
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 20px;
+  width: 280px;
+  transition: transform 0.3s;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.card-personaje img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.card-personaje h2 {
+  margin-top: 15px;
+  font-family: 'Impact', sans-serif;
+}
+
+.card-personaje button {
+  margin-top: 15px;
+  background-color: var(--color-claro);
+  color: #111;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Satoshi Bold', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card-personaje button:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo para las imágenes */
+.personaje img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.personaje h3 {
+  font-family: 'Impact', sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.texto-personaje {
+  font-family: 'Satoshi Light'; 
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  color: #ccc;
+  text-align: justify;
+}
+
+/* Estilo de los botones */
+.boton-mas {
+  background-color: transparent;
+  border: 2px dashed var(--color-claro);
+  color: var(--color-claro);
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-family: 'Impact', sans-serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton-mas:hover {
+  background-color: var(--color-claro);
+  color: #0f0f0f;
+  transform: scale(1.05);
+}
+
+/* proyecto */
+
+.contenido {
+  position: absolute; /* Posiciona el contenido encima del video */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Esto empuja el contenido hacia abajo */
+  align-items: flex-start;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  padding: 6rem;
+  box-sizing: border-box; /* Asegura que el padding no rompa el diseño */
+  gap: 2rem;
+  z-index: 10; /* Asegura que esté por encima del video */
+}
+
+.logo-nombre {
+  display: block;
+}
+
+.intro-texto {
+  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.4); /* mejora legibilidad */
+  padding: 2rem;
+  border-radius: 1rem;
+  color: #f0f0f0;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.intro-texto p {
+  margin: 0;
+}
+
+#ver-btn {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1rem;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3a5230;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#ver-btn:hover {
+  background-color: #4b6b3d;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .contenido {
+    padding: 2rem;
+  }
+
+  .intro-texto {
+    padding: 1.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  #ver-btn {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  }
+}
+
+#video-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#mutebtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-claro);
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  z-index: 1001;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#mutebtn img {
+  width: 35px;
+  height: 35px;
+  display: block;
+}
+
+#mutebtn:hover {
+  background-color: var(--color-gris);
+}
+
+@media (max-width: 768px) {
+  #mutebtn {
+    padding: 6px; /* más pequeño que 12px */
+  }
+
+  #mutebtn img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+#ver-btn {
+  font-family: 'Satoshi Bold', sans-serif;
+  background-color: var(--color-verde);
+  color: var(--color-claro);
+  border: none;
+  padding: 14px 28px; /* Más alto y ancho */
+  font-size: 1.1rem;   /* Un poco más grande */
+  margin-top: 2rem;
+  max-width: 240px;    /* Más ancho */
+  width: 100%;
+  margin-left: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#ver-btn:hover {
+  background-color: var(--color-gris);
+  transform: scale(1.03); /* Sutil aumento al pasar el mouse */
+}
+
+/* 🔥 SECCIÓN VIDEO ACTUALIZADA */
+#seccion-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('images/fondo-video.jpg'); /* REEMPLAZA por tu fondo real */
+  background-size: cover;
+  background-position: center;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+#seccion-video::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* oscurece el fondo */
+  z-index: -1;
+}
+
+.marco-video {
+  width: 95%;
+  max-width: 1200px; /* antes estaba en 960px */
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#cerrar-video {
+  margin-top: 20px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-family: 'Satoshi Light', sans-serif;
+  background-color: var(--color-oscuro1);
+  color: var(--color-claro);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#cerrar-video:hover {
+  background-color: var(--color-gris);
+}
+
+/* Responsivo */
+@media (max-width: 576px) {
+  .logo-nombre {
+    font-size: 1.4rem;
+    gap: 8px;
+  }
+
+  .logo-nombre img {
+    height: 32px;
+  }
+
+  .contenido {
+    margin-left: 70px;
+    padding: 1.5rem;
+  }
+
+  .marco-video {
+    width: 100%;
+    max-width: none;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  }
+
+  #cerrar-video {
+    margin-top: 12px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+
+/* Proyecto */
+
+
+.portada-proyecto {
+  background-image: url('images/fotogramaproyecto.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background-color: rgba(23, 24, 26, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo-portada {
+  width: 60%;
+  max-width: 500px;
+  margin-bottom: 1.5rem;
+}
+
+.frase-impacto {
+  font-size: 1.6rem;
+  max-width: 600px;
+  padding: 0 1rem;
+  font-family: 'Satoshi Light', sans-serif;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
+  margin-bottom: 3rem;
+}
+
+.scroll-down span {
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+  color: var(--color-claro);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.menu-lateral-derecha {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  padding: 10px;
+}
+
+.menu-item {
+  margin: 15px 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-item img {
+  width: 42px;
+  height: 42px;
+  filter: brightness(0) invert(1);
+}
+
+.menu-item:hover {
+  transform: scale(1.1);
+}
+
+/* Ocultar menú lateral derecho en móviles */
+@media (max-width: 768px) {
+  .menu-lateral-derecha {
+    display: none;
+  }
+}
+
+.seccion {
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.seccion h2 {
+  color: var(--color-claro);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Impact';
+}
+
+.seccion p {
+  color: var(--color-claro);
+  margin-bottom: 2rem;
+  font-family: 'Impact';
+}
+
+.video-embed {
+  max-width: 800px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+}
+
+.video-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-item {
+  max-width: 320px;
+  text-align: center;
+}
+
+.video-item img {
+  width: 100%;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.video-item img:hover {
+  transform: scale(1.05);
+}
+
+.video-item p {
+  margin-top: 0.5rem;
+  font-family: 'Satoshi Light', sans-serif;
+  font-size: 1rem;
+}
+
+
+
+@media (max-width: 768px) {
+  .logo-portada {
+    width: 80%;
+  }
+
+  .frase-impacto {
+    font-size: 1.2rem;
+  }
+
+  .menu-item img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .seccion h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.personaje-section {
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  max-width: 1100px;
+  width: 100%;
+  gap: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.personaje-image {
+  width: 30%;
+  max-width: 250px;
+}
+
+.personaje-content {
+  text-align: center;
+  flex: 1;
+}
+
+.personaje-content h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.personaje-content p {
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.personaje-image-right {
+  width: 30%;
+  max-width: 250px;
+}
+
+@media (max-width: 768px) {
+  .personaje-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .personaje-image,
+  .personaje-image-right {
+    width: 50%;
+  }
+}
+
+.gallery-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 1rem;
+  border-bottom: 2px solid #ccc;
+}
+
+.gallery-image {
+  display: inline-block;
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  margin-right: 1rem;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .gallery-image {
+    width: 250px;
+    height: 170px;
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery-image {
+    width: 200px;
+    height: 140px;
+  }
+}
+
+  .footer {
+    background-color: black;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    width: 100vw;
+    margin: 0;
+  }
+
+  .footer-logo {
+    width: 120px;
+    margin-bottom: 1rem;
+  }
+
+  .social-icons a {
+    margin: 0 0.5rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+
+  .circle {
+    background-color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .circle:hover {
+    background-color: #ddd;
+    transform: scale(1.1);
+  }
+
+  .social-icons img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Productora */
+
+  .productora-hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: url('images/fondoProductora.gif') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .logo-productora {
+    width: 300px; /* Aumentado el tamaño */
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+  
+  .frase-productora {
+    font-size: 1.8rem;
+    font-family: 'Mobitale', sans-serif;
+    margin-bottom: 60px; /* separa de la flecha */
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+  
+  .scroll-indicador {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    animation: bounce 1.5s infinite;
+    cursor: pointer;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(10px);
+    }
+  }
+
+
+  .equipo-container{
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+/* Para el título "EQUIPO" */
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  font-family: 'Mobitale', sans-serif;
+  color: #AB3130 !important; /* Uso de !important para asegurar que el color se aplique */
+}
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .grid-item {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 90px;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid #333;
+  }
+
+  .grid-item img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+    transition: 0.3s ease;
+  }
+
+  .grid-item:hover img {
+    opacity: 0.7;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .info-panel {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center; /* centramos todo */
+    gap: 40px;
+    padding: 40px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+
+/* Estilo para la imagen de detalle */
+.info-panel img {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 400px; /* Aumenta este valor para hacerla más grande */
+  height: auto;
+  border-radius: 12px;
+}
+
+.info-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+  .info-text h1 {
+    font-size: 2.5rem;
+    color: #AB3130;
+  }
+  
+  .info-text h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    font-family: 'Mobitale';
+  }
+  
+  .info-text p {
+    font-size: 1.1rem;
+    color: #fff;
+    font-family: 'Satoshi Light';
+  }
+
+  .info-links a {
+    background-color: #C9CDD3;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 6px 12px;
+    border: 1px solid white;
+    color: #AB3130;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: 'Satoshi Bold';
+    transition: 0.3s ease;
+  }
+  
+  /* No modificar los iconos cuando la imagen se agranda */
+  .info-links a img {
+    width: 18px; /* Tamaño específico de los iconos */
+    height: auto; /* Mantener la proporción */
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  
+  /* Efecto hover para los iconos */
+  .info-links a:hover {
+    background-color: white;
+    color: black;
+  }
+
+
+  @media screen and (min-width: 768px) {
+    .grid-container {
+      max-width: 800px;
+      margin: 0 auto;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+  
+    .grid-item {
+      max-width: 140px;
+    }
+  
+    .grid-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  
+    .info-panel {
+      max-width: 900px;
+      margin: 40px auto 0;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+  
+    .info-panel img {
+      max-width: 220px;
+      border-radius: 12px;
+    }
+  
+    .info-text h1 {
+      font-size: 2.2rem;
+    }
+  
+    .info-text h2 {
+      font-size: 1.6rem;
+    }
+  
+    .info-text p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .grid-item {
+      max-width: 70px;
+    }
+  
+    .info-panel {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .info-text {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .info-text h1 {
+      font-size: 1.5rem;
+    }
+  
+    .info-text h2 {
+      font-size: 1.1rem;
+    }
+  
+    .info-text p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .band-section {
+    background: url('images/fondoProductoraimg.JPG') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2rem;
+    position: relative;
+    color: white;
+  }
+  
+  .band-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+  
+  .band-content {
+    position: relative;
+    max-width: 600px;
+    z-index: 2;
+    text-align: left;
+    padding: 2rem;
+  }
+  
+  .band-content h2 {
+    font-family: 'Mobitale';
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .band-content p {
+    font-family: 'Satoshi light';
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn-band {
+    background-color: #C9CDD3;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 6px 12px;
+    border: 1px solid white;
+    color: #AB3130;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.7rem;
+    font-family: 'Satoshi Bold';
+  }
+  
+  .btn:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .band-section {
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+    }
+  
+    .band-content {
+      padding: 1rem;
+    }
+  
+    .band-content h2 {
+      font-size: 1.6rem;
+    }
+  
+    .band-content p {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .btn {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+  }
+
+  .mision-vision-section {
+  background-color: #111;
+  padding: 3rem 1rem;
+}
+
+.titulo-seccion {
+  font-family: 'Mobitale';
+  text-align: center;
+  font-size: 4rem;
+  color: #AB3130;
+  margin-bottom: 2rem;
+}
+
+/* CONTENEDOR DE TARJETAS */
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* TARJETAS */
+.tarjeta {
+  display: flex;
+  background: #000;
+  border: 1px solid #AB3130;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  padding: 1rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tarjeta.reverse {
+  flex-direction: row-reverse;
+}
+
+/* IMÁGENES PEQUEÑAS */
+.tarjeta img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* TEXTO */
+.texto {
+  color: #fff;
+  flex: 1;
+}
+
+.texto h3 {
+  font-family: 'Mobitale';
+  font-size: 2rem;
+  color: #AB3130;
+  margin-bottom: 0.5rem;
+}
+
+.texto p {
+  font-family: 'Satoshi Light';
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+/* RESPONSIVE PARA CELULAR */
+@media (max-width: 768px) {
+  .fila {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tarjeta,
+  .tarjeta.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tarjeta img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+.trabajos-destacados {
+  background-color: #0f0f0f;
+  color: white;
+  padding: 5rem 2rem;
+  font-family: 'Satoshi', sans-serif;
+}
+
+.titulo-seccion {
+  font-size: 2.5rem;
+  font-family: 'Mobitale';
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-left: 5px solid white;
+  padding-left: 1rem;
+}
+
+.contenedor-proyecto {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.texto-proyecto {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.subtitulo-proyecto {
+  font-family: 'Mobitale';
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.descripcion-proyecto {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.btn-proyecto {
+  background-color: #C9CDD3;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 6px 12px;
+    border: 1px solid white;
+    color: #AB3130;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.7rem;
+    font-family: 'Satoshi Bold';
+  }
+
+
+.btn-proyecto:hover {
+  background-color: white;
+    color: black;
+  }
+
+
+.imagen-proyecto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.imagen-proyecto img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .contenedor-proyecto {
+    flex-direction: column;
+  }
+
+  .texto-proyecto,
+  .imagen-proyecto {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .titulo-seccion {
+    text-align: center;
+    border-left: none;
+    border-bottom: 2px solid white;
+    padding-left: 0;
+    padding-bottom: 1rem;
+  }
+}
